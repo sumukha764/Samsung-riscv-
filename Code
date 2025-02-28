@@ -1,0 +1,26 @@
+#include <squadron.h>  // Include VSD Squadron library if required
+
+#define PIR_SENSOR 2  // PIR sensor output pin
+#define LED 3         // LED control pin
+#define BUZZER 4      // Buzzer control pin
+
+void setup() {
+    pinMode(PIR_SENSOR, INPUT);
+    pinMode(LED, OUTPUT);
+    pinMode(BUZZER, OUTPUT);
+
+    digitalWrite(LED, LOW);    // Ensure LED is off initially
+    digitalWrite(BUZZER, LOW); // Ensure Buzzer is off initially
+}
+
+void loop() {
+    int motion = digitalRead(PIR_SENSOR);  // Read PIR sensor
+    if (motion == HIGH) {
+        digitalWrite(LED, HIGH);    // Turn on LED
+        digitalWrite(BUZZER, HIGH); // Turn on Buzzer
+        delay(2000);  // Keep them on for 2 seconds
+    } else {
+        digitalWrite(LED, LOW);    // Turn off LED
+        digitalWrite(BUZZER, LOW); // Turn off Buzzer
+    }
+}
